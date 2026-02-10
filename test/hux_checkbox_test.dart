@@ -147,8 +147,7 @@ void main() {
       );
 
       // Should not throw when tapped
-      expect(
-          () => tester.tap(find.byType(HuxCheckbox)), returnsNormally);
+      expect(() => tester.tap(find.byType(HuxCheckbox)), returnsNormally);
     });
 
     testWidgets('renders with different sizes', (WidgetTester tester) async {
@@ -172,4 +171,3 @@ void main() {
     });
   });
 }
-
