@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.25.0] - 2026-02-10
+
+### Added
+- **HuxKBD**: New component for displaying keyboard shortcuts or keys
+  - Renders a styled box resembling a physical keyboard key
+  - Supports custom text (e.g., "⌘K", "Enter", "Esc")
+  - Theme-aware styling with automatic light/dark mode adaptation
+  - Monospace font and consistent padding for a "key" aesthetic
+  - Added comprehensive unit tests and documentation
+  - Exported as a public component for use in custom UIs
+
+### Enhanced
+- **HuxCommand**: Refactored to use the new `HuxKBD` component
+  - Replaced internal `_buildShortcutChip` with `HuxKBD` for consistent styling
+  - Improved visual hierarchy of shortcuts in the command palette
 
 ## [0.24.2] - 2026-01-03
 

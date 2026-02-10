@@ -20,8 +20,7 @@ void main() {
       expect(find.byType(HuxBadge), findsOneWidget);
     });
 
-    testWidgets('renders with different variants',
-        (WidgetTester tester) async {
+    testWidgets('renders with different variants', (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -144,4 +143,3 @@ void main() {
     });
   });
 }
-

@@ -44,6 +44,7 @@
               "components/dialog",
               "components/dropdown",
               "components/input",
+              "components/kbd",
               "components/textarea",
               "components/loading",
               "components/pagination",
