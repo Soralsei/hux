@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hux/hux.dart';
 
 import 'components/breadcrumbs_section.dart';
+import 'components/kbd_section.dart';
 import 'components/command_section.dart';
 import 'components/tabs_section.dart';
 import 'components/otp_section.dart';
@@ -131,6 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final _tabsKey = GlobalKey();
   final _breadcrumbsKey = GlobalKey();
   final _commandKey = GlobalKey();
+  final _kbdKey = GlobalKey();
   final _otpKey = GlobalKey();
 
   String? _selectedItemId;
@@ -191,6 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'tabs': _tabsKey,
       'breadcrumbs': _breadcrumbsKey,
       'command': _commandKey,
+      'kbd': _kbdKey,
     };
   }
 
@@ -440,6 +443,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           // Breadcrumbs Section
                           BreadcrumbsSection(key: _breadcrumbsKey),
                           const SizedBox(height: 32),
+                          // KBD Section
+                          KbdSection(key: _kbdKey),
+
+                          const SizedBox(height: 32),
+
                           // Command Section
                           CommandSection(
                             key: _commandKey,

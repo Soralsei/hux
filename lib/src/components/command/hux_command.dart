@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import '../../theme/hux_tokens.dart';
 import 'hux_command_item.dart';
 
+import 'hux_kbd.dart';
+
 /// HuxCommand is a command palette component that provides quick access
 /// to commands via search and keyboard shortcuts.
 ///
@@ -291,31 +293,11 @@ class _HuxCommandState extends State<HuxCommand> {
               ),
               if (command.shortcut != null) ...[
                 const SizedBox(width: 8),
-                _buildShortcutChip(context, command.shortcut!),
+                HuxKBD(shortcut: command.shortcut!),
               ],
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildShortcutChip(BuildContext context, String shortcut) {
-    // Display the shortcut exactly as provided. Pass display-ready strings
-    // like "⌘N", "⌘⇧F", "⌘⌥V", "⌃⇧T" from the caller.
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: HuxTokens.surfaceSecondary(context),
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Text(
-        shortcut,
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: HuxTokens.textTertiary(context),
-              fontFamily: 'monospace',
-              fontSize: 11,
-            ),
       ),
     );
   }

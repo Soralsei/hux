@@ -124,6 +124,11 @@ class NavigationItems {
       icon: LucideIcons.navigation,
     ),
     HuxSidebarItemData(
+      id: 'kbd',
+      label: 'KBD',
+      icon: LucideIcons.keyboard,
+    ),
+    HuxSidebarItemData(
       id: 'command',
       label: 'Command',
       icon: LucideIcons.command,

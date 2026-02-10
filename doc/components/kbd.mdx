@@ -1,0 +1,76 @@
+---
+title: 'KBD'
+description: 'Beautiful keyboard key component for shortcuts and UI indicators'
+---
+
+## Overview
+
+`HuxKBD` is a small, styled box component that resembles a physical keyboard key. It is primarily used to display keyboard shortcuts (e.g., "⌘K") or specific keys (e.g., "Enter", "Esc") in a visually distinct way. It is fully theme-aware and adapts seamlessly to light and dark modes.
+
+## Basic Usage
+
+```dart
+HuxKBD(shortcut: '⌘K')
+```
+
+## Examples
+
+### Single Keys
+Display individual modifier or action keys.
+
+```dart
+Row(
+  children: [
+    HuxKBD(shortcut: '⌘'),
+    HuxKBD(shortcut: '⇧'),
+    HuxKBD(shortcut: 'Enter'),
+  ],
+)
+```
+
+### Combinations
+Display keyboard shortcut combinations.
+
+```dart
+HuxKBD(shortcut: '⌘⇧P')
+```
+
+### Inline with Text
+Use `HuxKBD` within text to provide clear action indicators.
+
+```dart
+Row(
+  children: [
+    Text('Press'),
+    SizedBox(width: 4),
+    HuxKBD(shortcut: 'Enter'),
+    SizedBox(width: 4),
+    Text('to submit'),
+  ],
+)
+```
+
+## Integration with HuxCommand
+
+`HuxKBD` is integrated into the `HuxCommand` palette by default to display shortcuts for each command item. This ensures a consistent look and feel throughout the library.
+
+```dart
+HuxCommandItem(
+  id: 'save',
+  label: 'Save',
+  shortcut: '⌘S', // Uses HuxKBD internally
+  onExecute: () => print('Saved'),
+)
+```
+
+## API Reference
+
+### HuxKBD Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `shortcut` | `String` | **required** | The text to display inside the key (e.g., "⌘K", "Enter") |
+
+## Accessibility
+
+`HuxKBD` uses a monospace font and consistent padding to ensure readability for the special symbols often used in shortcuts. It automatically uses `HuxTokens.surfaceSecondary` for its background and `HuxTokens.textTertiary` for its text, ensuring appropriate contrast in both light and dark themes.

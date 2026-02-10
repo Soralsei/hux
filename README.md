@@ -14,14 +14,15 @@ A modern Flutter UI package with beautiful, customizable components designed for
 [![License: MIT](https://img.shields.io/badge/License-MIT-white?style=flat&labelColor=black)](https://opensource.org/licenses/MIT)
 
 
-## Latest Big Release: 0.24.0
+## Latest Big Release: 0.25.0
 
-**HuxBottomSheet**: Mobile-first modal component for menus and content
-  - Support for multiple sizes (small, medium, large, fullscreen)
-  - Optional title, subtitle, and action buttons
-  - Customizable drag handle and close button
-  - Responsive layout with smooth slide-up animations
-  - Theme-aware design with HuxTokens integration
+**HuxKBD**: New component for displaying keyboard shortcuts or keys
+  - Renders a styled box resembling a physical keyboard key
+  - Supports custom text (e.g., "⌘K", "Enter", "Esc")
+  - Theme-aware styling with automatic light/dark mode adaptation
+  - Monospace font and consistent padding for a "key" aesthetic
+  - Exported as a public component for use in custom UIs
+  - Integrated into `HuxCommand` for consistent shortcut display
 
 [![Changelog](https://img.shields.io/badge/Changelog-View-black?style=for-the-badge&labelColor=white&logo=github&logoColor=black)](CHANGELOG.md)
 [![Docs](https://img.shields.io/badge/Docs-Browse-black?style=for-the-badge&labelColor=white&logo=readthedocs&logoColor=black)](https://docs.thehuxdesign.com)
@@ -158,8 +159,9 @@ flutter pub add hux
 - `HuxBreadcrumbs` - Navigation breadcrumbs showing page hierarchy
 - `HuxBreadcrumbItem` - Individual breadcrumb with label, icon, and tap handler
 
-### Command
+### Command & Keys
 - `HuxCommand` - Powerful command palette for quick access to actions and navigation
+- `HuxKBD` - Beautiful keyboard key component for shortcuts and UI indicators
 - Global keyboard shortcuts integration with `HuxCommandShortcuts.wrapper`
 
 ### Bottom Sheet
@@ -579,9 +581,12 @@ HuxAlert(
 )
 ```
 
-#### Command Palette
+#### Command Palette & Keyboard Keys
 
 ```dart
+// HuxKBD for individual keys
+HuxKBD(shortcut: '⌘K')
+
 // Define your commands
 final commands = [
   HuxCommandItem(
