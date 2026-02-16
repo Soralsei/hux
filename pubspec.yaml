@@ -48,14 +48,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cristalyse: ^1.15.0
+  cristalyse: ^1.16.0
   universal_html: ^2.2.4
   lucide_icons: ^0.257.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   test: ^1.25.15
 
 # Explicitly declare platform support including WASM
