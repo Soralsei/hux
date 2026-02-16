@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0] - 2026-02-16
+
+### Breaking Changes
+- **Flutter SDK Requirement**: Updated minimum supported Flutter SDK version to `3.22.0`
+  - This change is required to support modern `WidgetState` APIs
+  - Replaces deprecated `MaterialState` APIs with new `WidgetState` equivalents
+
 ## [0.25.0] - 2026-02-10
 
 ### Added
