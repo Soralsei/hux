@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.1] - 2026-02-23
+
+### Fixed
+- **WASM Compatibility**: Replaced `universal_html` with Flutter's built-in `BrowserContextMenu` API
+  - Removes transitive `dart:io` import that caused Web WASM incompatibility
+  - Fixes listener leak where `_disableBrowserContextMenu()` registered duplicate event handlers on every widget rebuild
+
+### Removed
+- **Dependency**: Removed `universal_html` package — no longer needed for browser context menu handling
+
 ## [1.0.0] - 2026-02-16
 
 ### Breaking Changes

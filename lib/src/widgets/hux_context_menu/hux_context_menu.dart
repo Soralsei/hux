@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:flutter/services.dart';
 import '../../theme/hux_tokens.dart';
 import 'hux_context_menu_item.dart';
 import 'hux_context_menu_divider.dart';
@@ -84,8 +84,7 @@ class HuxContextMenu extends StatelessWidget {
 
   void _disableBrowserContextMenu() {
     if (kIsWeb) {
-      // Prevent default browser context menu
-      html.document.onContextMenu.listen((event) => event.preventDefault());
+      BrowserContextMenu.disableContextMenu();
     }
   }
 
