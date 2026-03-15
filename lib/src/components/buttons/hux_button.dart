@@ -32,6 +32,8 @@ class HuxButton extends StatelessWidget {
     this.isDisabled = false,
     this.icon,
     this.primaryColor,
+    this.focusNode,
+    this.autofocus = false,
   });
 
   /// Callback triggered when the button is pressed
@@ -58,6 +60,12 @@ class HuxButton extends StatelessWidget {
   /// Primary color used for styling the button (optional, defaults to theme primary)
   final Color? primaryColor;
 
+  /// Optional focus node for keyboard focus control.
+  final FocusNode? focusNode;
+
+  /// Whether this button should request focus automatically.
+  final bool autofocus;
+
   /// Width behavior of the button (optional)
   /// - null: Hug content (default)
   /// - HuxButtonWidth.expand: Full width
@@ -77,6 +85,8 @@ class HuxButton extends StatelessWidget {
       width: _getWidth(),
       child: ElevatedButton(
         onPressed: isDisabled || isLoading ? null : onPressed,
+        focusNode: focusNode,
+        autofocus: autofocus,
         style: buttonStyle.copyWith(
           // Override minimum width constraints for hug behavior
           minimumSize: (width == null || width == HuxButtonWidth.hug)
@@ -129,6 +139,8 @@ class HuxButton extends StatelessWidget {
     final horizontalPadding = isIconOnly ? 0.0 : _getHorizontalPadding();
     final verticalPadding = isIconOnly ? 0.0 : _getVerticalPadding();
 
+    final focusColor = HuxTokens.primary(context).withValues(alpha: 0.5);
+
     return ButtonStyle(
       backgroundColor: WidgetStateProperty.all(backgroundColor),
       foregroundColor: WidgetStateProperty.all(foregroundColor),
@@ -142,15 +154,27 @@ class HuxButton extends StatelessWidget {
           vertical: verticalPadding,
         ),
       ),
-      shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: borderSide,
-        ),
+      shape: WidgetStateProperty.resolveWith<OutlinedBorder>(
+        (Set<WidgetState> states) {
+          final isFocused = states.contains(WidgetState.focused);
+          return RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: isFocused
+                ? BorderSide(
+                    color: focusColor,
+                    width: 2,
+                    strokeAlign: BorderSide.strokeAlignOutside,
+                  )
+                : borderSide,
+          );
+        },
       ),
       // Custom hover effect only (no press effect)
       overlayColor: WidgetStateProperty.resolveWith<Color?>(
         (Set<WidgetState> states) {
+          if (states.contains(WidgetState.focused)) {
+            return focusColor.withValues(alpha: 0.12);
+          }
           if (states.contains(WidgetState.hovered)) {
             // Enhanced hover effect for primary buttons
             if (variant == HuxButtonVariant.primary) {
