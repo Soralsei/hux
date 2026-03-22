@@ -32,6 +32,7 @@ class HuxButton extends StatelessWidget {
     this.isDisabled = false,
     this.icon,
     this.primaryColor,
+    this.textColor,
     this.focusNode,
     this.autofocus = false,
   });
@@ -59,6 +60,9 @@ class HuxButton extends StatelessWidget {
 
   /// Primary color used for styling the button (optional, defaults to theme primary)
   final Color? primaryColor;
+
+  /// Optional text/icon color override.
+  final Color? textColor;
 
   /// Optional focus node for keyboard focus control.
   final FocusNode? focusNode;
@@ -109,28 +113,29 @@ class HuxButton extends StatelessWidget {
         final effectivePrimaryColor =
             primaryColor ?? HuxTokens.primary(context);
         backgroundColor = effectivePrimaryColor;
-        foregroundColor = HuxWCAG.getContrastingTextColor(
-          backgroundColor: effectivePrimaryColor,
-          context: context,
-        );
+        foregroundColor = textColor ??
+            HuxWCAG.getContrastingTextColor(
+              backgroundColor: effectivePrimaryColor,
+              context: context,
+            );
         borderSide = BorderSide(
             color: _getContrastingBorderColor(effectivePrimaryColor, context));
         break;
       case HuxButtonVariant.secondary:
         backgroundColor = HuxTokens.buttonSecondaryBackground(context);
-        foregroundColor = HuxTokens.buttonSecondaryText(context);
+        foregroundColor = textColor ?? HuxTokens.buttonSecondaryText(context);
         borderSide =
             BorderSide(color: HuxTokens.buttonSecondaryBorder(context));
         break;
       case HuxButtonVariant.outline:
         backgroundColor = Colors.transparent;
-        foregroundColor = HuxTokens.buttonSecondaryText(context);
+        foregroundColor = textColor ?? HuxTokens.buttonSecondaryText(context);
         borderSide =
             BorderSide(color: HuxTokens.buttonSecondaryBorder(context));
         break;
       case HuxButtonVariant.ghost:
         backgroundColor = Colors.transparent;
-        foregroundColor = HuxTokens.buttonSecondaryText(context);
+        foregroundColor = textColor ?? HuxTokens.buttonSecondaryText(context);
         break;
     }
 
@@ -237,6 +242,7 @@ class HuxButton extends StatelessWidget {
   }
 
   Color _getForegroundColor(BuildContext context) {
+    if (textColor != null) return textColor!;
     switch (variant) {
       case HuxButtonVariant.primary:
         final effectivePrimaryColor =
