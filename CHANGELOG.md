@@ -1,13 +1,37 @@
 # Changelog
 
+## [1.2.0] - 2026-04-20
+
+### Added
+
+- **HuxTabView**: Chrome-style tab bar component with drag-to-reorder support (renamed from HuxTabBar)
+  - Dynamic tab addition and removal via `HuxTabViewController`
+  - Touch-friendly drag behavior with long-press detection
+  - Curved tab transitions for visual continuity
+  - Support for icons and closable/non-closable tabs
+  - Three size variants: small, medium, and large
+  - Comprehensive callbacks: `onTabChanged`, `onTabClosed`, `onNewTabRequested`
+  - Configurable width constraints with intrinsic sizing option
+
 ## [1.1.0] - 2026-03-23
 
 ### Added
+- **HuxTabView**: New tabbed navigation component for dynamic workspace management
+  - Browser-like or IDE-like tab interface with open, close, switch, and reorder capabilities
+  - Drag-to-reorder support with mouse and touch handling
+  - Keyboard shortcuts (Ctrl/Cmd+T to open, Ctrl/Cmd+W to close, Ctrl/Cmd+Tab to switch)
+  - Optional external controller for programmatic tab management
+  - Configurable closable tabs, new tab button, and visual variants (pill, chrome)
+  - Comprehensive test coverage and documentation
 - **HuxSnackbar actions**: Support for action buttons via `actions: List<HuxSnackbarAction>`
   - Actions render as primary `HuxButton`s for clear affordance
   - Tapping an action dismisses the snackbar automatically
 - **Stacked snackbars (overlay)**: `HuxSnackbarStackController` for showing multiple snackbars simultaneously
   - Smooth enter/exit animations (slide from bottom + fade, 180ms/160ms)
+
+### Changed
+
+- **Example app**: Updated Snackbar section with interactive toggles and stacked behavior demo
 
 ### Fixed
 - **Double-dismiss on legacy action**: Removed redundant `onCloseRequest`/`hideCurrentSnackBar` call from the `HuxSnackbarAction` wrapper — dismissal is now handled exclusively by `HuxButton.onPressed`, preventing snackbars from being dismissed twice
@@ -15,9 +39,6 @@
 - **Stacked overlay**: Resolved layout and positioning edge cases in `HuxSnackbarStackController`
 - **Accessibility**: Improved semantic labels and keyboard navigation within snackbar action rows
 - **Test reliability**: Fixed test pollution and race conditions in snackbar widget tests
-
-### Changed
-- **Example app**: Updated Snackbar section with interactive toggles and stacked behavior demo
 
 ## [1.0.2] - 2026-03-15
 
@@ -1012,4 +1033,4 @@
 - Beautiful data visualization with animated charts
 - Customizable styling options
 - Responsive design support
-- Accessibility considerations 
+- Accessibility considerations
