@@ -155,7 +155,7 @@ class SidebarHeader extends StatelessWidget {
                 size: HuxButtonSize.small,
                 width: HuxButtonWidth.expand,
                 // Icon changed since `github` icon does not exist in Lucide anymore
-                icon: LucideIcons.gitGraph,
+                icon: LucideIcons.externalLink,
                 child: const Text('GitHub'),
               ),
               const SizedBox(height: 8),
